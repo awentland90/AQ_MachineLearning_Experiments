@@ -10,16 +10,18 @@ In recent years, the field of machine learning has grown substantially as a new 
 
 
 * [Air Pollution Modeling] - Overview  on Computational Air Quality Modeling
+* [Machine Learning for Software Engineers] - Guide to Applied Machine Learning
 
 [Air Pollution Modeling]: <http://home.iitk.ac.in/~anubha/Modeling.pdf>
 [CAMx]: <http://www.camx.com/about/default.aspx>
 [CMAQ]: <https://www.cmascenter.org/cmaq/>
 [CALPUFF]: <http://www.src.com/>
 [SCICHEM]: <http://download.ramboll-environ.com/environcorp/SCICHEM%20Air%20Quality%20Model.pdf>
+[Machine Learning for Software Engineers]: <https://github.com/ZuzooVn/machine-learning-for-software-engineers>
 
 ### Current Experiments
 
 | Directory | Description |
 | ------ | ------ |
-| BasicAlgorithms | machinelearning_ozone.py (Testing simple machine learning algorithms) |
+| BasicAlgorithms | Testing simple machine learning algorithms |
 
