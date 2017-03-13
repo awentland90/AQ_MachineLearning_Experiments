@@ -4,20 +4,20 @@
 Andy Wentland
 awentland90@gmail.com
 
-This example borrows heavily from the framework developed by Jason Brownlee for basic machine learning
-http://machinelearningmastery.com/compare-machine-learning-algorithms-python-scikit-learn/
-
 Set Up:
 
-I have provided a sample CASTNET AQ and Meteorology input data file that will be used for our model.
+Included is a sample CASTNET AQ and Meteorology input data file that will be used for our model.
+I cleaned this up so you will not have to worry about dealing with missing or bad data.
+
 csv_in = "./data/CASTNET_clean_ozone_met_MLready.csv"
 
 The model has 3 indpendent physical variables:
  Temperature, Solar Radiation, and Wind Speed
 
-These three variables are are imporant, although not nearly comprehensive, when considering the physical impact they
-have on air pollution. I have hand sorted AQI (Air Quality Index) for this site and temporal period. THIS AQI IS NOT
-WHAT THE EPA USES. For simplicity I have generated quartiles based on this observational data sets ozone concentration
+These three variables were chosen because they are imporant, although not comprehensive, when considering the physical
+impact they have on air pollution and particulary ground level ozone formation. I have hand sorted AQI
+(Air Quality Index) for this site and temporal period. THIS AQI IS NOT WHAT THE EPA USES.
+For simplicity I have generated quartiles based on this observational data sets ozone concentration
 and then assigned 4 AQI categories.
 
 O3 Conc	    AQI	        Quartile
@@ -28,6 +28,9 @@ O3 Conc	    AQI	        Quartile
 
 Usage:
 $ python machinelearning_ozone.py
+
+This example borrows from the framework Jason Brownlee introduces for basic machine learning
+http://machinelearningmastery.com/compare-machine-learning-algorithms-python-scikit-learn/
 
 """
 import pandas
@@ -44,10 +47,12 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 
-
+# Read in CSV of raw observational data
 csv_in = "./data/CASTNET_clean_ozone_met_MLready.csv"
 names = ['TEMPERATURE', 'SOLAR_RADIATION', 'WINDSPEED', 'AQI']
 dataset = pandas.read_csv(csv_in, names=names)
+
+# Do some quick summaries of the raw data set so we know what we're working with
 print("\nHead 20 of Dataset")
 print(dataset.head(20))
 print("\nDescribe Data")
@@ -55,12 +60,11 @@ print(dataset.describe())
 print("\nAQI Distribution")
 print(dataset.groupby('AQI').size())
 
-dataset.hist()
-plt.savefig("./images/histogram.png")
-
+# Scatter matrix summary
 scatter_matrix(dataset)
 plt.savefig("./images/scatter_matrix.png")
 
+# Split data into training and validation
 array = dataset.values
 X = array[:, 0:3]
 Y = array[:, 3]
@@ -68,7 +72,7 @@ validation_size = 0.3
 seed = 8
 X_train, X_validation, Y_train, Y_validation = cross_validation.train_test_split(X, Y, test_size=validation_size, random_state=seed)
 
-# Test options and evaluation metric
+# Set options of the algorithms
 num_folds = 10
 num_instances = len(X_train)
 seed = 9
