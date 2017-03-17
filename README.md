@@ -1,6 +1,6 @@
 # Air Quality Machine Learning Experiments
 
-A collection of machine learning experiments to investigate the feasbility of fast and accurate air quality modeling using machine learning and neural network techniques.
+A collection of statistical and machine learning experiments to investigate the feasbility of fast and accurate air quality modeling using machine learning and neural network techniques.
 
 ### Background
 
@@ -24,4 +24,4 @@ In recent years, the field of machine learning has grown substantially as a new 
 | Directory | Description |
 | ------ | ------ |
 | BasicAlgorithms | Testing simple machine learning algorithms |
-
+| Interpolation | Interpolation techniques for observed surface data|
