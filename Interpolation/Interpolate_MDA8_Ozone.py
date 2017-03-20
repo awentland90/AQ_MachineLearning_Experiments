@@ -100,7 +100,6 @@ def mk_plots(m, llcrnrlat, urcrnrlat, lcrnrlon, urcrnrlon, data, xi, yi, ozone_i
 
     # Define global subplot options
     colorbar_shrink = 0.7
-    colorbar_padding = 0.08
     colorbar_size = 8
     title_size = 10
     tick_size = 8
@@ -143,9 +142,6 @@ def mk_plots(m, llcrnrlat, urcrnrlat, lcrnrlon, urcrnrlon, data, xi, yi, ozone_i
     m.drawmeridians(np.arange(round(lcrnrlon), round(urcrnrlon), 8.),
                     color='0.25', linewidth=0.5, labels=[False, False, False, True], size=tick_size)
 
-    # contour plot
-    # CS = plt.contour(xi, yi, ozone_interp, 20, linewidths=0.5, colors='k')
-    # con = m.contourf(xi, yi, ozone_interp, zorder=4, alpha=0.6, cmap="jet")
     # scatter plot
     m.scatter(data['lon'], data['lat'], 10, data['1st Max Value']*1000, alpha=.75, cmap="jet", zorder=4)
 
