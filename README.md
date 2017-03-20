@@ -25,3 +25,4 @@ In recent years, the field of machine learning has grown substantially as a new 
 | ------ | ------ |
 | BasicAlgorithms | Testing simple machine learning algorithms |
 | Interpolation | Interpolation techniques for observed surface data|
+| NeuralNets | Neural network and deep learning testing|
